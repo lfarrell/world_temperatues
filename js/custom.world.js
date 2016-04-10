@@ -85,7 +85,7 @@ var render = _.debounce(function() {
         var world_strip_color = stripColors(temp_colors, world_filtered);
 
         /* Avg World Temp Month */
-        d3.select("#avg_temp_text").text(avgs.world + ' Celsius');
+        d3.select("#avg_temp_text").text(avgs.world);
         d3.select("#hottest").text(world_max_min_value.max[4].actual_avg);
         d3.select("#hottest-year").text(world_max_min_value.max[4].year);
         d3.select("#least-hottest").text(world_max_min_value.min[0].actual_avg);
@@ -108,9 +108,9 @@ var render = _.debounce(function() {
        var tip_temp = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
                 '<ul class="list-unstyled">' +
-                '<li>Historical Avg: ' + d.historic_avg + ' degrees</li>' +
-                '<li>Actual Avg: ' + d.actual_avg + ' degrees</li>' +
-                '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
+                '<li>Historical Avg: ' + d.historic_avg + ' degrees (C)</li>' +
+                '<li>Actual Avg: ' + d.actual_avg + ' degrees (C)</li>' +
+                '<li>Departure from Avg: ' + d.anomaly + ' degrees (C)</li>' +
                 '</ul>';
         });
 
@@ -118,7 +118,7 @@ var render = _.debounce(function() {
         drawStrip("#world_div", tip_temp, world_strip_color, world_filtered);
 
         /* Land Temp */
-        d3.select("#avg_max_text").text(avgs.land + ' Celsius');
+        d3.select("#avg_max_text").text(avgs.land);
         d3.select("#maxtemp").text(land_max_min_value.max[4].actual_avg);
         d3.select("#maxtemp-year").text(land_max_min_value.max[4].year);
         d3.select("#least-maxtemp").text(land_max_min_value.min[0].actual_avg);
@@ -142,9 +142,9 @@ var render = _.debounce(function() {
         var tip_max = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
                 '<ul class="list-unstyled">' +
-                '<li>Historical Avg: ' + d.historic_avg + ' degrees</li>' +
-                '<li>Actual Avg: ' + d.actual_avg + ' degrees</li>' +
-                '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
+                '<li>Historical Avg: ' + d.historic_avg + ' degrees (C)</li>' +
+                '<li>Actual Avg: ' + d.actual_avg + ' degrees (C)</li>' +
+                '<li>Departure from Avg: ' + d.anomaly + ' degrees (C)</li>' +
                 '</ul>';
         });
         var max_strip_color = stripColors(temp_colors, land_filtered);
@@ -177,9 +177,9 @@ var render = _.debounce(function() {
         var tip_min = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
                 '<ul class="list-unstyled">' +
-                '<li>Historical Avg: ' + d.historic_avg + ' degrees</li>' +
-                '<li>Actual Avg: ' + d.actual_avg + ' degrees</li>' +
-                '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
+                '<li>Historical Avg: ' + d.historic_avg + ' degrees (C)</li>' +
+                '<li>Actual Avg: ' + d.actual_avg + ' degrees (C)</li>' +
+                '<li>Departure from Avg: ' + d.anomaly + ' degrees (C)</li>' +
                 '</ul>';
         });
         var min_strip_color = stripColors(temp_colors, ocean_filtered);
@@ -311,9 +311,9 @@ var render = _.debounce(function() {
                 div.html(
                         '<h4 class="text-center">' + stringDate(month) + ' (' + d.year + ')</h4>' +
                             '<ul class="list-unstyled"' +
-                            '<li>Historical Avg: ' + d.historic_avg + ' degrees</li>' +
-                            '<li>Actual Avg: ' + d.actual_avg + ' degrees</li>' +
-                            '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
+                            '<li>Historical Avg: ' + d.historic_avg + ' degrees (C)</li>' +
+                            '<li>Actual Avg: ' + d.actual_avg + ' degrees (C)</li>' +
+                            '<li>Departure from Avg: ' + d.anomaly + ' degrees (C)</li>' +
                             '</ul>'
 
                     )
@@ -403,7 +403,7 @@ function stripColors(values, data) {
 function drawLegend(selector, color_values, values) {
     d3.select(selector).append("h4")
         .attr("class", "text-center heading")
-        .text("Departure from Average (Anomaly degrees Celsius)");
+        .text("Departure from Average (Anomaly degrees (C))");
 
     var colors = stripColors(color_values, values);
     var class_name = selector.substr(1);

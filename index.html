@@ -16,12 +16,12 @@
         <p id="load" class="text-center">Loading ...</p>
     </div>
     <div class="row hide">
-        <h1 class="text-center">State of the Weather</h1>
+        <h1 class="text-center">World of the Weather</h1>
         <div class="col-sm-12 col-lg-offset-1 col-lg-10">
             <p>Climate change doesn't mean it's always hot outside, or that every year will necessarily be hotter than the next.
                 That said, most of the coolest temperatures occurred before 1950, while temperatures have gotten increasingly warm
                 over the past few decades, most notably since the turn of the century. You can use the following visualization to see changes through time
-                in world weather from 1880 to the present. The strip charts below each
+                in world temperatures from 1880 to the present. The strip charts below each
                 line chart show anomalies from the historical averages for the chart above it. Hover over or swipe a graph
                 to see details for that month. Note: dotted yellow lines in graphs indicate the historic average
                 for the chart in question.
@@ -56,21 +56,22 @@
             <h2 class="text-center">Selected Month: <span class="selected_month">January</span></h2>
 
              <h3 class="text-center">Average World Temperature</h3>
-             <h4 class="text-center">(Historical Avg: <span id="avg_temp_text"></span> degrees)</h4>
+             <h4 class="text-center">(Historical Avg: <span id="avg_temp_text"></span> degrees Celsius)</h4>
 
             <p class="col-sm-12 col-lg-offset-1 col-lg-10">World temperatures are an amalgam of land and ocean temperatures.
-            Land temperatures tend to vary considerably from month to month, while ocean temperatures tend to remain fairly stable
-            resulting in much warmer world temperatures on average than if land temperatures are considered by themselves.</p>
+            Land temperatures tend to vary considerably from month to month While, ocean temperatures tend to remain fairly stable
+            resulting in much warmer world temperatures on average in the northern hemisphere winter, and cooler temperatures
+                on average in the northern hemisphere summer, than if land temperatures are considered by themselves.</p>
             <p class="col-sm-12 col-lg-offset-1 col-lg-10">Overall, The hottest average world temperature for
                 <span class="selected-month"></span> was in <span id="hottest-year"></span>
-                when the average temperature was <span id="hottest"></span> degrees.The coolest average world temperature for
+                when the average temperature was <span id="hottest"></span> degrees Celsius.The coolest average world temperature for
                 <span class="selected-month"></span> was in <span id="least-hottest-year"></span>
-                when the average temperature was <span id="least-hottest"></span> degrees.
+                when the average temperature was <span id="least-hottest"></span> degrees Celsius.
             </p>
         </div>
         <div id="land_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Land Temperature</h3>
-            <h4 class="text-center">(Historical Avg: <span id="avg_max_text"></span> degrees)</h4>
+            <h4 class="text-center">(Historical Avg: <span id="avg_max_text"></span> degrees Celsius)</h4>
             <p class="col-sm-12 col-lg-offset-1 col-lg-10">
                 Land temperatures tend to be colder and show much more variability than overall world temperatures
                 as a whole, and ocean temperatures in particular which act as the great temperature moderator. Overall,
@@ -78,25 +79,25 @@
             </p>
             <p class="col-sm-12 col-lg-offset-1 col-lg-10">The hottest average land temperature for
                 <span class="selected-month"></span> was in <span id="maxtemp-year"></span> when the
-                average land temperature was <span id="maxtemp"></span> degrees.
+                average land temperature was <span id="maxtemp"></span> degrees Celsius.
             The coolest average land temperature for
                 <span class="selected-month"></span> was in <span id="least-maxtemp-year"></span> when the
-                average land temperature was <span id="least-maxtemp"></span> degrees.
+                average land temperature was <span id="least-maxtemp"></span> degrees Celsius.
             </p>
         </div>
         <div id="ocean_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Ocean Temperature</h3>
-            <h4 class="text-center">(Historical Avg: <span id="avg_min_text"></span> degrees)</h4>
+            <h4 class="text-center">(Historical Avg: <span id="avg_min_text"></span> degrees Celsius)</h4>
             <p class="col-sm-12 col-lg-offset-1 col-lg-10">
                 Overall, ocean temperatures vary very little and are much warmer than land temperatures as a rule. However, you'll
                 notice a discernible upward trend over time.
             </p>
             <p class="col-sm-12 col-lg-offset-1 col-lg-10">The hottest monthly average ocean temperature for
                 <span class="selected-month"></span> was
-                in <span id="mintemp-year"></span> when the average minimum temperature was <span id="mintemp"></span> degrees.
+                in <span id="mintemp-year"></span> when the average minimum temperature was <span id="mintemp"></span> degrees Celsius.
             The coldest monthly average ocean temperature for
                 <span class="selected-month"></span> on record was
-                in <span id="least-mintemp-year"></span> when the average temperature was <span id="least-mintemp"></span> degrees.
+                in <span id="least-mintemp-year"></span> when the average temperature was <span id="least-mintemp"></span> degrees Celsius.
             </p>
         </div>
 
@@ -125,7 +126,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.9.0/d3-legend.min.js"></script>
 <script src="js/swoopy-drag/lib/d3-jetpack.min.js"></script>
-<script src="js/custom.world.js"></script>
+<script src="js/custom.world.min.js"></script>
 <script type="text/javascript">
    /* var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-47256145-1']);
