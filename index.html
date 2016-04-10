@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Visualization of Historical Weather Trends of the World" />
+    <meta name="keywords" content="World Historical Temperature Anomalies,Temperatures,Historical Temperature Anomalies" />
+    <title>World Temperatures</title>
+    <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div id="note" class="row">
+        <p id="load" class="text-center">Loading ...</p>
+    </div>
+    <div class="row hide">
+        <h1 class="text-center">State of the Weather</h1>
+        <div class="col-sm-12 col-lg-offset-1 col-lg-10">
+            <p>Climate change doesn't mean it's always hot outside, or that every year will necessarily be hotter than the next.
+                That said, most of the coolest temperatures occurred before 1950, while temperatures have gotten increasingly warm
+                over the past few decades, most notably since the turn of the century. You can use the following visualization to see changes through time
+                in world weather from 1880 to the present. The strip charts below each
+                line chart show anomalies from the historical averages for the chart above it. Hover over or swipe a graph
+                to see details for that month. Note: dotted yellow lines in graphs indicate the historic average
+                for the chart in question.
+            </p>
+            <p>If you'd like to see a more detailed weather history for the United States see the companion site,
+            <a href="../state_weather">State of the Weather</a>.</p>
+        </div>
+    </div>
+    <div class="row hide">
+        <div class="col-sm-12 col-lg-12" id="us_heat">
+            <div class="col-sm-offset-4 col-sm-4 col-md-offset-4 col-lg-4">
+                <select id="month" name="month" class="form-control">
+                    <option value="">--Select Month--</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row charts opaque">
+        <div id="world_div" class="col-sm-12 col-lg-12">
+            <h2 class="text-center">Selected Month: <span class="selected_month">January</span></h2>
+
+             <h3 class="text-center">Average World Temperature</h3>
+             <h4 class="text-center">(Historical Avg: <span id="avg_temp_text"></span> degrees)</h4>
+
+            <p class="col-sm-12 col-lg-offset-1 col-lg-10">World temperatures are an amalgam of land and ocean temperatures.
+            Land temperatures tend to vary considerably from month to month, while ocean temperatures tend to remain fairly stable
+            resulting in much warmer world temperatures on average than if land temperatures are considered by themselves.</p>
+            <p class="col-sm-12 col-lg-offset-1 col-lg-10">Overall, The hottest average world temperature for
+                <span class="selected-month"></span> was in <span id="hottest-year"></span>
+                when the average temperature was <span id="hottest"></span> degrees.The coolest average world temperature for
+                <span class="selected-month"></span> was in <span id="least-hottest-year"></span>
+                when the average temperature was <span id="least-hottest"></span> degrees.
+            </p>
+        </div>
+        <div id="land_div" class="col-sm-12 col-lg-12">
+            <h3 class="text-center">Average Land Temperature</h3>
+            <h4 class="text-center">(Historical Avg: <span id="avg_max_text"></span> degrees)</h4>
+            <p class="col-sm-12 col-lg-offset-1 col-lg-10">
+                Land temperatures tend to be colder and show much more variability than overall world temperatures
+                as a whole, and ocean temperatures in particular which act as the great temperature moderator. Overall,
+                you'll notice a distinct upward trend in the temperatures on land.
+            </p>
+            <p class="col-sm-12 col-lg-offset-1 col-lg-10">The hottest average land temperature for
+                <span class="selected-month"></span> was in <span id="maxtemp-year"></span> when the
+                average land temperature was <span id="maxtemp"></span> degrees.
+            The coolest average land temperature for
+                <span class="selected-month"></span> was in <span id="least-maxtemp-year"></span> when the
+                average land temperature was <span id="least-maxtemp"></span> degrees.
+            </p>
+        </div>
+        <div id="ocean_div" class="col-sm-12 col-lg-12">
+            <h3 class="text-center">Average Ocean Temperature</h3>
+            <h4 class="text-center">(Historical Avg: <span id="avg_min_text"></span> degrees)</h4>
+            <p class="col-sm-12 col-lg-offset-1 col-lg-10">
+                Overall, ocean temperatures vary very little and are much warmer than land temperatures as a rule. However, you'll
+                notice a discernible upward trend over time.
+            </p>
+            <p class="col-sm-12 col-lg-offset-1 col-lg-10">The hottest monthly average ocean temperature for
+                <span class="selected-month"></span> was
+                in <span id="mintemp-year"></span> when the average minimum temperature was <span id="mintemp"></span> degrees.
+            The coldest monthly average ocean temperature for
+                <span class="selected-month"></span> on record was
+                in <span id="least-mintemp-year"></span> when the average temperature was <span id="least-mintemp"></span> degrees.
+            </p>
+        </div>
+
+        </div>
+
+        <div class="col-sm-12 col-lg-12">
+            <footer>
+                <ul class="list-unstyled">
+                    <li><a href="../index.php">Other Visualizations</a></li>
+                    <li><a href="../western_water">Western Water</a></li>
+                    <li><a href="mailto:farrelldlfarrell@gmail.com">Email</a></li>
+                    <li><a href="https://twitter.com/farrelldlfarrel">Twitter</a></li>
+                </ul>
+            </footer>
+        </div>
+        <div class="col-sm-12 col-lg-12">
+            <p class="col-md-offset-1 subfooter">
+                <a href="http://www.ncdc.noaa.gov/monitoring-references/faq/anomalies.php">Anomalies data</a> and
+                <a href="http://www.ncdc.noaa.gov/monitoring-references/faq/anomalies.php">historical averages data</a> courtesy of the
+                National Oceanic and Atmospheric Administration.</p>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.9.0/d3-legend.min.js"></script>
+<script src="js/swoopy-drag/lib/d3-jetpack.min.js"></script>
+<script src="js/custom.world.js"></script>
+<script type="text/javascript">
+   /* var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47256145-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })(); */
+</script>
+</body>
+</html>

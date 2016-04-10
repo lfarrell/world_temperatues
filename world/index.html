@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Visualization of Historical Weather Trends of the United States" />
+    <meta name="keywords" content="United States Historical Temperature Anomalies,Temperatures,Historical Temperature Anomalies" />
+    <title>US Temperatures</title>
+    <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style type="text/css">
+        rect {
+            stroke: gray;
+            stroke-width: .4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div id="note" class="row">
+        <p id="load" class="text-center">Loading ...</p>
+    </div>
+    <div class="row hide">
+        <h1 class="text-center">State of the Weather</h1>
+        <div class="col-sm-12 col-lg-offset-1 col-lg-10">
+            <p>Climate change doesn't mean it's always hot outside, or that every year will necessarily be hotter than the next.
+                For example, the average temperature of the United States was below 20th century historical averages as
+                recently as February 2015. You can use the following visualization to see changes through time
+                in American weather. You can view the average temperature,
+                maximum average temperature, minimum average temperature, average precipitation level
+                and the average drought level for every state in the contiguous United States. The strip charts below each
+                line chart show anomalies from the historical averages for the chart above it. Data ranges from
+                1895 to 2016, depending on the state. Hover over or swipe a graph to see details for that state and month.
+                (Note: does not include Alaska or Hawaii).
+            </p>
+            <p>Note: dotted yellow lines in graphs indicate the historic average
+                for the chart in question.</p>
+        </div>
+    </div>
+    <div class="row hide">
+        <div class="col-sm-12 col-lg-12" id="us_heat">
+            <div class="text-center">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row charts opaque">
+        <div id="temp_div" class="col-sm-12 col-lg-12">
+            <h2 class="text-center">Selected Area: <span class="selected_state">Contiguous U.S.</span>
+                (<span class="selected_month">January</span>)</h2>
+
+            <h3 class="text-center">Average Temperature</h3>
+            <h4 class="text-center">(Historical Avg: <span id="avg_temp_text"></span> degrees)</h4>
+
+            <p class="col-sm-12 col-lg-offset-1 col-lg-10">As might be expected, average temperatures vary widely across the United States.
+                Geography isn't the only reason that temperatures have varied. Notice that over the last few years much of the west has
+                been well above average compared to the east. While, in December 2015 the situation was reversed and much
+                of the east had significantly above average temperatures. Overall, the average maximum and minimum
+                temperatures tend to closely track the hottest and coldest months on record.</p>
+            <p class="col-sm-12 col-lg-offset-1 col-lg-10">Overall, The hottest daily average temperature for <span class="selected-state"></span>
+                in <span class="selected-month"></span> was in <span id="hottest-year"></span>
+                when the average temperature was <span id="hottest"></span> degrees.The coolest daily average temperature for <span class="selected-state"></span>
+                in <span class="selected-month"></span> was in <span id="least-hottest-year"></span>
+                when the average temperature was <span id="least-hottest"></span> degrees.
+            </p>
+        </div>
+
+        <div class="col-sm-12 col-lg-12">
+            <footer>
+                <ul class="list-unstyled">
+                    <li><a href="../index.php">Other Visualizations</a></li>
+                    <li><a href="../western_water">Western Water</a></li>
+                    <li><a href="mailto:farrelldlfarrell@gmail.com">Email</a></li>
+                    <li><a href="https://twitter.com/farrelldlfarrel">Twitter</a></li>
+                </ul>
+            </footer>
+        </div>
+        <div class="col-sm-12 col-lg-12">
+            <p class="col-md-offset-1 subfooter">
+                All data courtesy of the <a href="http://www.ncdc.noaa.gov/cag/time-series/us/">
+                National Oceanic and Atmospheric Administration</a>.</p>
+            </p>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.9.0/d3-legend.min.js"></script>
+<script src="../js/swoopy-drag/lib/d3-jetpack.min.js"></script>
+<script src="../js/functions.js"></script>
+<script src="../js/custom.world.js"></script>
+<script type="text/javascript">
+    /* var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-47256145-1']);
+     _gaq.push(['_trackPageview']);
+
+     (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })(); */
+</script>
+</body>
+</html>
