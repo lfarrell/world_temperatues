@@ -1,6 +1,6 @@
 <?php
 $months = range(1,12);
-/*
+
 foreach($months as $month) {
     $fields = [
         "ocean" => "http://www.ncdc.noaa.gov/cag/time-series/global/globe/ocean/1/$month/1880-2016.csv",
@@ -66,12 +66,12 @@ $temps = [
         "11" => 12.9,
         "12" => 12.2
     ]
-]; */
+];
 
 $path = "data";
 $files = scandir($path);
 $headers = ["year", "anomaly", "historic_avg", "actual_avg", "type", "month"];
-/*
+
 $fh = fopen("world/world_all.csv", "wb");
 fputcsv($fh, $headers);
 
@@ -105,7 +105,7 @@ foreach($files as $file) {
     }
 }
 
-fclose($fh); */
+fclose($fh);
 
 $months_used = [];
 if (($handle = fopen("data/world_all.csv", "r")) !== FALSE) {
