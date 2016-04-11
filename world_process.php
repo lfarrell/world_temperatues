@@ -21,8 +21,7 @@ foreach($months as $month) {
     }
 
     echo $month . " processed\n";
-} */
-
+}
 // http://www.ncdc.noaa.gov/monitoring-references/faq/anomalies.php
 $temps = [
     "land" => [
@@ -51,7 +50,7 @@ $temps = [
         "09" => 16.2,
         "10" => 15.9,
         "11" => 15.8,
-        "12" =>15.7
+        "12" => 15.7
     ],
     "ocean_land" => [
         "01" => 12.0,
@@ -67,13 +66,14 @@ $temps = [
         "11" => 12.9,
         "12" => 12.2
     ]
-];
+]; */
 
-$path = "world/data";
+$path = "data";
 $files = scandir($path);
-
+$headers = ["year", "anomaly", "historic_avg", "actual_avg", "type", "month"];
+/*
 $fh = fopen("world/world_all.csv", "wb");
-fputcsv($fh, ["year", "anomaly", "historic_avg", "actual_avg", "type", "month"]);
+fputcsv($fh, $headers);
 
 
 foreach($files as $file) {
@@ -105,4 +105,29 @@ foreach($files as $file) {
     }
 }
 
-fclose($fh);
+fclose($fh); */
+
+$months_used = [];
+if (($handle = fopen("data/world_all.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        foreach($months as $month) {
+            $month_string = ($month < 10) ? "0$month" : $month;
+            $fg = fopen("data/$month_string.csv", "a");
+            if(!in_array($month_string, $months_used)) {
+                fputcsv($fg, $headers);
+                $months_used[] = $month_string;
+            }
+
+
+
+            if($month_string == $data[5]) {
+                fputcsv($fg, $data);
+            }
+
+        }
+        $i = 0;
+        fclose($fg);
+    }
+
+    fclose($handle);
+}

@@ -31,7 +31,7 @@ var render = _.debounce(function() {
     var month = localStorage.getItem('month');
     var width = window.innerWidth - 100 - margins.right - margins.left;
 
-    d3.csv('data/world_all.csv', function(data) {
+    d3.csv('data/' + month + '.csv', function(data) {
         data.forEach(function(d) {
             d.date = d.month + '/' + d.year;
             d.actual_avg = _.round(+d.actual_avg, 2);
@@ -42,9 +42,9 @@ var render = _.debounce(function() {
         // Sort by month and type plus min max values
         var month_sorted =  _.sortByOrder(data, ['month', 'year'], ['asc', 'asc']);
 
-        var world_filtered = dataFilter(month_sorted, 'ocean_land', month);
-        var land_filtered = dataFilter(month_sorted, 'land', month);
-        var ocean_filtered = dataFilter(month_sorted, 'ocean', month);
+        var world_filtered = dataFilter(month_sorted, 'ocean_land');
+        var land_filtered = dataFilter(month_sorted, 'land');
+        var ocean_filtered = dataFilter(month_sorted, 'ocean');
 
         var avgs = {
             world: world_filtered[0].historic_avg,
@@ -334,13 +334,12 @@ var render = _.debounce(function() {
 /**
  * Filter data
  * @param datas
- * @param value
- * @param value_two
+ * @param type
  * @returns {Array|NodeFilter}
  */
-function dataFilter(datas, type, month) {
+function dataFilter(datas, type) {
     return datas.filter(function(d) {
-        return d.type === type && d.month === month;
+        return d.type === type;
     });
 }
 
